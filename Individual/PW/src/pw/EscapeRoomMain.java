@@ -62,6 +62,7 @@ public class EscapeRoomMain extends JFrame {
             @Override
             public void mouseEntered(MouseEvent e) {
                 powerOffbtn.setIcon(powerOn);
+		powerOffbtn.setCursor(new Cursor(Cursor.HAND_CURSOR));
             }
 
             @Override
@@ -73,6 +74,7 @@ public class EscapeRoomMain extends JFrame {
             public void mousePressed(MouseEvent e) {
                 powerOffbtn.setIcon(powerOn);
                 new Password(EscapeRoomMain.this); 
+		powerOffbtn.setCursor(new Cursor(Cursor.HAND_CURSOR));
             }
         });
         add(powerOffbtn);
