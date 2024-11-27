@@ -15,7 +15,6 @@ public class EscapeRoomMain extends JFrame {
     private JLabel clueLabel2;
     private JLabel clueLabel3;
     private JLabel clueLabel4;
-    private JPanel endPanel;
     private boolean clue1Visible = false;
     private boolean clue2Visible = false;
     private boolean clue3Visible = false;
@@ -38,7 +37,6 @@ public class EscapeRoomMain extends JFrame {
         createMainMenu();
         createStoryPanel();
         createOfficeRoom();
-        createEndPanel();
         
         cardLayout.show(mainPanel, "Menu");
         setVisible(true);
@@ -87,27 +85,27 @@ public class EscapeRoomMain extends JFrame {
             @Override
             protected void paintComponent(Graphics g) {
                 super.paintComponent(g);
-                ImageIcon backgroundImage = new ImageIcon("src/images/시작페이지.png");
+                ImageIcon backgroundImage = new ImageIcon("src/images/메인화면.jpg");
                 g.drawImage(backgroundImage.getImage(), 0, 0, getWidth(), getHeight(), this);
             }
         };
         menuPanel.setLayout(null);
 
-        JButton startButton = new JButton(new ImageIcon("src/images/시작기본.png"));
-        startButton.setBounds(20, 700, 300, 80);
+        JButton startButton = new JButton(new ImageIcon("src/images/startButtonBasic1.png"));
+        startButton.setBounds(450, 400, 300, 80);
         startButton.setBorderPainted(false);
         startButton.setContentAreaFilled(false);
         startButton.setFocusPainted(false);
         startButton.addMouseListener(new MouseAdapter() {
         	 @Override
              public void mouseEntered(MouseEvent e) {
-                 startButton.setIcon(new ImageIcon("src/images/시작노랑.png"));
+                 startButton.setIcon(new ImageIcon("src/images/startButtonEntered1.png"));
                  startButton.setCursor(new Cursor(Cursor.HAND_CURSOR));
              }
 
              @Override
              public void mouseExited(MouseEvent e) {
-                 startButton.setIcon(new ImageIcon("src/images/시작기본.png"));
+                 startButton.setIcon(new ImageIcon("src/images/startButtonBasic1.png"));
                  startButton.setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
              }
 
@@ -119,21 +117,21 @@ public class EscapeRoomMain extends JFrame {
          });
          menuPanel.add(startButton);
 
-        JButton quitButton = new JButton(new ImageIcon("src/images/종료기본.png"));
-        quitButton.setBounds(860, 800, 300, 80);
+        JButton quitButton = new JButton(new ImageIcon("src/images/quitButtonBasic1.png"));
+        quitButton.setBounds(450, 500, 300, 80);
         quitButton.setBorderPainted(false);
         quitButton.setContentAreaFilled(false);
         quitButton.setFocusPainted(false);
         quitButton.addMouseListener(new MouseAdapter() {
         	@Override
             public void mouseEntered(MouseEvent e) {
-                quitButton.setIcon(new ImageIcon("src/images/종료노랑.png"));
+                quitButton.setIcon(new ImageIcon("src/images/quitButtonEntered1.png"));
                 quitButton.setCursor(new Cursor(Cursor.HAND_CURSOR));
             }
 
             @Override
             public void mouseExited(MouseEvent e) {
-                quitButton.setIcon(new ImageIcon("src/images/종료기본.png"));
+                quitButton.setIcon(new ImageIcon("src/images/quitButtonBasic1.png"));
                 quitButton.setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
             }
 
@@ -144,48 +142,30 @@ public class EscapeRoomMain extends JFrame {
         });
         menuPanel.add(quitButton);
 
-        JButton storyButton = new JButton(new ImageIcon("src/images/설명기본.png"));
-        storyButton.setBounds(20, 800, 300, 80);
-        quitButton.setBorderPainted(false);
-        quitButton.setContentAreaFilled(false);
-        quitButton.setFocusPainted(false);
-        quitButton.addMouseListener(new MouseAdapter() {
-        	@Override
-            public void mouseEntered(MouseEvent e) {
-                quitButton.setIcon(new ImageIcon("src/images/설명노랑.png"));
-                quitButton.setCursor(new Cursor(Cursor.HAND_CURSOR));
-            }
-
-            @Override
-            public void mouseExited(MouseEvent e) {
-                quitButton.setIcon(new ImageIcon("src/images/설명기본.png"));
-                quitButton.setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
-            }
-
-            @Override
-            public void mousePressed(MouseEvent e) {
-            	
-            }
-        });
+        JButton storyButton = new JButton("Story Explanation");
+        storyButton.setBounds(450, 600, 300, 80);
+        storyButton.setFont(new Font("Arial", Font.BOLD, 16));
+        storyButton.setFocusPainted(false);
+        storyButton.addActionListener(e -> cardLayout.show(mainPanel, "Story"));
         menuPanel.add(storyButton);
         
         mainPanel.add(menuPanel, "Menu");
         
-        JButton rankingButton = new JButton(new ImageIcon("src/images/랭킹기본.png"));
-        rankingButton.setBounds(860, 700, 300, 80);
+        JButton rankingButton = new JButton(new ImageIcon("src/images/startButtonEntered1.png"));
+        rankingButton.setBounds(450, 700, 300, 80);
         rankingButton.setBorderPainted(false);
         rankingButton.setContentAreaFilled(false);
         rankingButton.setFocusPainted(false);
         rankingButton.addMouseListener(new MouseAdapter() {
         	 @Override
              public void mouseEntered(MouseEvent e) {
-        		 rankingButton.setIcon(new ImageIcon("src/images/랭킹노랑.png"));
+        		 rankingButton.setIcon(new ImageIcon("src/images/startButtonEntered1.png"));
         		 rankingButton.setCursor(new Cursor(Cursor.HAND_CURSOR));
              }
 
              @Override
              public void mouseExited(MouseEvent e) {
-            	 rankingButton.setIcon(new ImageIcon("src/images/랭킹기본.png"));
+            	 rankingButton.setIcon(new ImageIcon("src/images/startButtonEntered1.png"));
                  rankingButton.setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
              }
 
@@ -225,25 +205,6 @@ public class EscapeRoomMain extends JFrame {
         });
         officeRoomPanel.add(computerpasswordgamebutton);
         
-        JButton DaruButton = new JButton(new ImageIcon("src/images/Daru1.png"));
-        DaruButton.setBounds(30,530, 350, 500);
-        DaruButton.setBorderPainted(false);
-        DaruButton.setContentAreaFilled(false);
-        DaruButton.setFocusable(false);
-        DaruButton.addMouseListener(new MouseAdapter() {
-        	@Override
-        	public void mouseEntered(MouseEvent e) {
-        		DaruButton.setIcon(new ImageIcon("src/images/Daru2.png"));
-        	}
-        	
-            @Override
-            public void mouseExited(MouseEvent e) {
-            	DaruButton.setIcon(new ImageIcon("src/images/Daru1.png"));
-            	DaruButton.setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
-            }
-        });
-        officeRoomPanel.add(DaruButton);
-        
         JButton logicartbutton = new JButton(new ImageIcon("src/images/쪽지 원본.png"));
         logicartbutton.setBounds(670, 260, 70, 70);
         logicartbutton.setBorderPainted(false);
@@ -269,149 +230,6 @@ public class EscapeRoomMain extends JFrame {
         });
         
         officeRoomPanel.add(logicartbutton);
-        
-        JButton key1button = new JButton(new ImageIcon("src/images/SmallBlueKey.png"));
-        key1button.setBounds(900, 520, 100, 100);
-        key1button.setBorderPainted(false);
-        key1button.setContentAreaFilled(false);
-        key1button.setFocusable(false);
-        key1button.addMouseListener(new MouseAdapter() {
-            @Override
-            public void mouseEntered(MouseEvent e) {
-                key1button.setIcon(new ImageIcon("src/images/SmallBlueKey.png"));
-                key1button.setCursor(new Cursor(Cursor.HAND_CURSOR));
-            }
-
-            @Override
-            public void mouseExited(MouseEvent e) {
-                key1button.setIcon(new ImageIcon("src/images/SmallBlueKey.png"));
-                key1button.setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
-            }
-
-            @Override
-            public void mousePressed(MouseEvent e) {
-               key1button.setBounds(380, 710, 100, 100);
-                
-            }
-        });
-        
-        officeRoomPanel.add(key1button);
-        
-        //key2 버튼
-        JButton key2button = new JButton(new ImageIcon("src/images/RedSmallKey.png"));
-        key2button.setBounds(10000, 300, 220, 220);
-        key2button.setBorderPainted(false);
-        key2button.setContentAreaFilled(false);
-        key2button.setFocusable(false);
-        key2button.addMouseListener(new MouseAdapter() {
-            @Override
-            public void mouseEntered(MouseEvent e) {
-               key2button.setIcon(new ImageIcon("src/images/RedSmallKey.png"));
-               key2button.setCursor(new Cursor(Cursor.HAND_CURSOR));
-            }
-
-            @Override
-            public void mouseExited(MouseEvent e) {
-               key2button.setIcon(new ImageIcon("src/images/RedSmallKey.png"));
-                key2button.setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
-            }
-
-            @Override
-            public void mousePressed(MouseEvent e) {
-               key2button.setBounds(480, 710, 100, 100);
-                
-            }
-        });
-
-       officeRoomPanel.add(key2button);
-        
-        //door1 버튼
-        JButton door1button = new JButton(new ImageIcon("src/images/서랍1.png"));
-        door1button.setBounds(605, 365, 148, 73 );
-        door1button.setBorderPainted(false);
-        door1button.setContentAreaFilled(false);
-        door1button.setFocusable(false);
-        door1button.addMouseListener(new MouseAdapter() {
-            @Override
-            public void mouseEntered(MouseEvent e) {
-               door1button.setIcon(new ImageIcon("src/images/서랍1 어둡게.png"));
-               door1button.setCursor(new Cursor(Cursor.HAND_CURSOR));
-            }
-
-            @Override
-            public void mouseExited(MouseEvent e) {
-               door1button.setIcon(new ImageIcon("src/images/서랍1.png"));
-               door1button.setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
-            }
-
-            @Override
-            public void mousePressed(MouseEvent e) { 
-                // key1button의 위치가 (380, 710, 100, 100)일 때 문을 열 수 있음
-                if (key1button.getBounds().equals(new Rectangle(380, 710, 100, 100))) {
-                    key2button.setBounds(480, 710, 100, 100); // 키2가 나타남
-                    showClue4();
-                    JOptionPane.showMessageDialog(
-                        officeRoomPanel,
-                        "열쇠와 지도를 획득했습니다",
-                        "문이 열렸습니다!",
-                        JOptionPane.INFORMATION_MESSAGE
-                    );
-                } else {
-                    JOptionPane.showMessageDialog(
-                        officeRoomPanel,
-                        "서랍이 잠겨있습니다!",
-                        "상호작용 실패",
-                        JOptionPane.WARNING_MESSAGE
-                    );
-                }
-            }
-
-        });
-        
-        officeRoomPanel.add(door1button);
-        
-        //door2
-        JButton door2button = new JButton(new ImageIcon("src/images/서랍2.png"));
-        door2button.setBounds(605, 435, 148, 73);
-        door2button.setBorderPainted(false);
-        door2button.setContentAreaFilled(false);
-        door2button.setFocusable(false);
-        door2button.addMouseListener(new MouseAdapter() {
-            @Override
-            public void mouseEntered(MouseEvent e) {
-               door2button.setIcon(new ImageIcon("src/images/서랍2 어둡게.png"));
-               door2button.setCursor(new Cursor(Cursor.HAND_CURSOR));
-            }
-
-            @Override
-            public void mouseExited(MouseEvent e) {
-               door2button.setIcon(new ImageIcon("src/images/서랍2.png"));
-               door2button.setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
-            }
-
-            @Override
-            public void mousePressed(MouseEvent e) {
-                if (key2button.getBounds().equals(new Rectangle(480, 710, 100, 100))) {
-                   //족보조각 추가
-                    JOptionPane.showMessageDialog(
-                        officeRoomPanel,
-                        "프로그래밍 방법론을 듣는 강의실 번호는?",
-                        "비밀번호 힌트!",
-                        JOptionPane.INFORMATION_MESSAGE
-                    );
-                } else {
-                    JOptionPane.showMessageDialog(
-                        officeRoomPanel,
-                        "키가 필요합니다!",
-                        "상호작용 실패",
-                        JOptionPane.WARNING_MESSAGE
-                    );
-                }
-                
-            }
-        });
-        
-        officeRoomPanel.add(door2button);
         
         JButton bookbutton = new JButton(new ImageIcon("src/images/책.png"));
         bookbutton.setBounds(350, 405, 60, 140);
@@ -443,24 +261,18 @@ public class EscapeRoomMain extends JFrame {
                     int secDiffTime = (int) ((endTime - startTime) / 1000);
 
                     JOptionPane.showMessageDialog(null, "정답입니다!", "결과", JOptionPane.INFORMATION_MESSAGE);
-                    
+
                     String name = playerName;
 
                     scoreManager.addPlayer(name, secDiffTime);
                     scoreManager.saveScores();
                     scoreManager.printRanking();
-                    
-                    cardLayout.show(mainPanel, "End");
 
-                    Timer timer = new Timer(3000, new ActionListener() {
-                        @Override
-                        public void actionPerformed(ActionEvent e) {
-                            endGame();
-                            endShowTypingEffect();
-                        }
-                    });
-                    timer.setRepeats(false);
-                    timer.start();
+                    RankingGUI rankingGUI = new RankingGUI();
+                    rankingGUI.showRanking(scoreManager);
+
+                    endGame();
+                    endShowTypingEffect();
                 }
             }
         });
@@ -480,7 +292,7 @@ public class EscapeRoomMain extends JFrame {
 
         
         clueLabel3 = new JLabel(new ImageIcon("src/images/지도4.png"));
-        clueLabel3.setBounds(20, 40, 300, 100);
+        clueLabel3.setBounds(800, 500, 300, 100);
         clueLabel3.setVisible(true);
         officeRoomPanel.add(clueLabel3);      
         clueLabel3.addMouseListener(new MouseAdapter() {
@@ -490,16 +302,23 @@ public class EscapeRoomMain extends JFrame {
             }
         }
         );
+        
         clueLabel4 = new JLabel(new ImageIcon("src/images/지도3.png"));
         clueLabel4.setBounds(881, 820, 300, 100);
-        clueLabel4.setVisible(false);
+        clueLabel4.setVisible(true);
         officeRoomPanel.add(clueLabel4);
-
+        
         clueLabel3.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
                 clueLabel3.setLocation(881, 725);
-                clue3Visible = true;
+                clue3Visible = true;  // 상태 변수 업데이트
+            }
+        });
+        clueLabel4.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                clue4Visible = true;  // 상태 변수 업데이트
             }
         });
 
@@ -529,19 +348,6 @@ public class EscapeRoomMain extends JFrame {
         storyPanel.add(backButton);
 
         mainPanel.add(storyPanel, "Story");
-    }
-    
-    private void createEndPanel() {
-        endPanel = new JPanel(new BorderLayout());
-        endPanel.setBackground(Color.WHITE);
-        
-        ImageIcon endImageIcon = new ImageIcon("src/images/전설의족보.png"); // 원하는 이미지 파일 경로
-        JLabel endImageLabel = new JLabel(endImageIcon);
-        endImageLabel.setHorizontalAlignment(SwingConstants.CENTER);
-        
-        endPanel.add(endImageLabel, BorderLayout.CENTER);
-        
-        mainPanel.add(endPanel, "End");
     }
     
     // 추가   
@@ -666,57 +472,36 @@ public class EscapeRoomMain extends JFrame {
             }
 
             if (!skipped) {
-                PlayerStart();
-                cardLayout.show(mainPanel, "OfficeRoom");
+                PlayerStart(); // 닉네임 입력
+                cardLayout.show(mainPanel, "OfficeRoom"); // 화면 전환
             }
         }).start();
 
+        // Skip 버튼 추가 (게임 시작 시)
         addSkipButtonToPanel(800, 600, () -> {
             skipped = true;
-            PlayerStart();
-            cardLayout.show(mainPanel, "OfficeRoom");
+            PlayerStart(); // 닉네임 받기
+            cardLayout.show(mainPanel, "OfficeRoom"); // 화면 전환
         });
     }
 
     private void endShowTypingEffect() {
         String[] texts = {
-        	"(다루 책 줍는 사진)\n"
-        	+"?? :  ...\n"
-        	+"?? : 아니... 이럴수가..!!! \n",
-        	
-        	"( 다루 책들고 깜짝 놀라는 사진)\n"
-        	+"?? : 이제 이 방법만 체득하면 나도 A+을 받을 수 있는 건가..?!\n",
-        	
-        	"(다루 팔 W 하고있는 사진)\n"
-        	+"?? : 인간이 어떻게 이런 생각을 할 수 있지..? 너무 아름답고 감동적인 방법이야...!\n",
-        	
-        	"( 다루 주먹쥐고 있는 사진 )\n"
-        	+"?? : 좋았어!!! 오늘부터 시작이다! \n",
-        	
-        	"(다루 하늘찌르기 사진 )\n"
-        	+"?? : A+ 넌 이제 내꺼야!!!\n",
-
-        	"시험치는중 ...(고뇌하는 다루 사진)\n",
-
-        	"(다루 놀라는 사진 전신)\n"
-       		+"?? : 헉! 진짜 A+ 이잖아..! 역시 전설의 족보인가...!!!!\n",
-       		
-        	"( 다루 주먹쥐고 있는 사진 )\n"
-        	+"?? : 오예~~!!!!!!!!! 평생 나만 알고있어야지!!!!!!!\n",
+            "엔딩 스토리 넣을 예정임다\n"
         };
 
         skipped = false;
 
         new Thread(() -> {
-            JTextArea typingArea = (JTextArea) typingPanel.getComponent(0);
+            JTextArea typingArea = (JTextArea) typingPanel.getComponent(0); // JTextArea 참조
             for (String text : texts) {
                 if (skipped) break;
 
-                typingArea.setVisible(true);
+                typingArea.setVisible(true); // JTextArea를 보이게 함
 
                 for (int i = 0; i <= text.length(); i++) {
                     if (skipped) break;
-                    typingArea.setText(text.substring(0, i));
+                    typingArea.setText(text.substring(0, i)); // JTextArea에 텍스트 설정
                     try {
                         Thread.sleep(50);
                     } catch (InterruptedException e) {
@@ -731,7 +516,7 @@ public class EscapeRoomMain extends JFrame {
                     e.printStackTrace();
                 }
 
-                typingArea.setText("");
+                typingArea.setText(""); // JTextArea 비우기
                 try {
                     Thread.sleep(500);
                 } catch (InterruptedException e) {
@@ -740,27 +525,30 @@ public class EscapeRoomMain extends JFrame {
             }
 
             if (!skipped) {
-                System.exit(0);
+                System.exit(0); // 게임 종료
             }
         }).start();
 
+        // Skip 버튼 추가 (게임 종료 시)
         addSkipButtonToPanel(800, 600, () -> {
             skipped = true;
-            System.exit(0);
+            System.exit(0); // 게임 종료
         });
     }
 
+    // 버튼 중복 방지하도록 수정
     private void addSkipButtonToPanel(int x, int y, Runnable action) {
+        // Skip 버튼이 이미 추가되었는지 확인
         for (Component comp : typingPanel.getComponents()) {
             if (comp instanceof JButton && ((JButton) comp).getText().equals("Skip")) {
-                return;
+                return; // 이미 존재하면 추가하지 않음
             }
         }
 
         JButton skipButton = new JButton("Skip");
         skipButton.setBounds(x, y, 150, 50);
         skipButton.setFont(new Font("Arial", Font.PLAIN, 18));
-        skipButton.addActionListener(e -> action.run());
+        skipButton.addActionListener(e -> action.run()); // 버튼 클릭 시 동작 실행
 
         typingPanel.add(skipButton);
     }
@@ -771,13 +559,12 @@ public class EscapeRoomMain extends JFrame {
         clue1Visible = true;
         System.out.print(playerName);
     }
-    public void showClue2() {
+    public void showClue2() {//              여기 추가
     	clueLabel2.setVisible(true);
     	clue2Visible = true;
     }
-    public void showClue4() {
-    	clueLabel4.setVisible(true);
-    	clue4Visible = true;
-    }
 
+//    public static void main(String[] args) {
+//        new EscapeRoomMain(); // EscapeRoomMain 클래스 인스턴스 생성
+//    }
 }
